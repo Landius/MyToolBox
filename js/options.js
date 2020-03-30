@@ -3,7 +3,7 @@ init().then(null).catch(init);
 async function init() {
 	window.$ = selector => document.querySelector(selector);
 	window.$$ = selector => document.querySelectorAll(selector);
-	await chrome.extension.sendRequest({'cmd': 'get_config'}, config=>{
+	await chrome.runtime.sendMessage({'cmd': 'get_config'}, config=>{
 		renderHTML(config);
 	});
 }
@@ -144,7 +144,7 @@ function saveConfig(){
 		}
 	});
 	renderHTML(newConfig);
-	chrome.extension.sendRequest({'cmd': 'save_config', 'config': newConfig}, function(){
+	chrome.runtime.sendMessage({'cmd': 'save_config', 'config': newConfig}, function(){
 		chrome.notifications.create(null, {
 			type: 'basic',
 			iconUrl: './images/logo128x128.png',
@@ -156,7 +156,7 @@ function saveConfig(){
 function resetConfig(){
 	var choice = confirm('这会清除所有数据，确定吗？');
 	if(choice){
-		chrome.extension.sendRequest({'cmd': 'reset_config'}, function(){
+		chrome.runtime.sendMessage({'cmd': 'reset_config'}, function(){
 			location.reload();
 		});
 	}

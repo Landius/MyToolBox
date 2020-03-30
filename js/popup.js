@@ -1,6 +1,6 @@
 function addSearchEngines(){
-    // seems that chrome.extension.sendRequest is an async api
-    chrome.extension.sendRequest({cmd: 'get_config'}, function(config){
+    // seems that chrome.runtime.sendMessage is an async api
+    chrome.runtime.sendMessage({cmd: 'get_config'}, function(config){
         // add search engines to popup.html
         var rawHtml = [];
         var group_id = [];
@@ -49,6 +49,6 @@ function search() {
     window.open(url);
 }
 addSearchEngines();
-chrome.extension.sendRequest({cmd: 'get_emoji'}, function(emoji){
+chrome.runtime.sendMessage({cmd: 'get_emoji'}, function(emoji){
   document.getElementById('search_box').placeholder = emoji;
 });

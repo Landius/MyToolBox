@@ -294,7 +294,7 @@ function init() {
         createCM(cachedConfig);
     });
     // add event listener
-    chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         switch(request.cmd) {
             case 'get_emoji':
                 sendResponse(emoji[Math.round(Math.random()*emoji.length)]);

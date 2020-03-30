@@ -29,7 +29,7 @@ function handleClicking(){
             e.preventDefault();
             var url = e.target.href;
 			loading();
-            chrome.extension.sendRequest({'cmd': 'open_link', 'url': url});
+            chrome.runtime.sendMessage({'cmd': 'open_link', 'url': url});
 		}
 	});
 
@@ -45,7 +45,7 @@ function handleClicking(){
 }
 
 function getConfig(resolve, reject){
-	chrome.extension.sendRequest({cmd: 'get_config'}, function(config){
+	chrome.runtime.sendMessage({cmd: 'get_config'}, function(config){
 		if(config == undefined){
 			reject();
 		}else{

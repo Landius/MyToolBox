@@ -5,7 +5,7 @@
    "version": "1.0",
    "description": "多引擎搜索，自定义主页, 导出页面为 MHTML",
    "homepage_url": "https://github.com/Landius/MyToolBox",
-   "permissions": [ "contextMenus", "tabs", "storage", "notifications", "pageCapture"],
+   "permissions": [ "contextMenus", "tabs", "storage", "notifications"],
    "options_page": "options.html",
    "chrome_url_overrides" : {
     "newtab": "newtab.html"

@@ -24,12 +24,6 @@ function createCM(config) {
         'id' : 'searchBy',
         'contexts' :['selection']
     });
-    chrome.contextMenus.create({
-        'title': 'MHTML',
-        'id': 'saveAsMHTML',
-        'contexts': ['page'],
-        'onclick': saveAsMHTML
-    });
 
     var groups = [];
     for (var i in config.SEARCH.ENGINES) {
@@ -63,15 +57,6 @@ function search(info, tab) {
     var url = search.URL.replace('%s', encodeURIComponent(info.selectionText));
     document.body.onkeydown = 
     chrome.tabs.create({'url': url, 'index': tab.index+1, 'active': true});
-}
-
-function saveAsMHTML(info, tab){
-    chrome.pageCapture.saveAsMHTML({
-        'tabId': tab.id
-    }, function(mhtmlData){
-        // save page via fileSaver.js
-        saveAs(mhtmlData, tab.title + '.mht');
-    });
 }
 
 function init() {

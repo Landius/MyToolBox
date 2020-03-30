@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>MyToolBox Config</title>
+	<meta charset="utf-8">
+	<link href="css/options.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+  <div id="main">
+	<div align="middle"><h2>MyToolBox</h2></div>
+	<hr width="60%">
+	<h2>设置</h2>
+		<div>
+			<h3>搜索引擎</h3>
+			<div class="other-option">
+				<input type="checkbox" id="quiet-tab">
+				<span>后台打开搜索页</span>
+			</div>
+			<div class="other-option">
+				<span>&nbsp;右键菜单标题: </span>
+				<input type="text" name="prefix" id="prefix">
+			</div>
+			<div id="engines"></div>
+			<div align="middle">
+				<button type="button" id="new-engine">添加</button>
+			</div>
+			<br>
+			<h3>导航网站</h3>
+			<div class="other-option">
+				<input type="checkbox" id="hide-nav">
+				<span>新标签页隐藏导航站（仍可通过点击标题打开</span>
+			</div>
+			<div class="other-option">
+				<input type="checkbox" id="hide-nav-2">
+				<span>弹出页隐藏导航站</span>
+			</div>
+			<div id="sites"></div>
+			<div align="middle">
+				<button type="button" id="new-site">添加</button>
+			</div>
+			<br>
+			<h3>导入/导出</h3>
+			通过 json 文件导入/导出设置，注意导入的设置会覆盖原有设置
+			<br>
+			<input type="file" accept=".json" id="file" style="display:none"></input>
+			<button id="import-data">导入设置</button>
+			<button id="export-data">导出设置</button>
+			<br>
+			<div id="save_area" align="left">
+				<i id="save" class="float_icon material-icons" title="保存">save</i>
+				<br>
+				<i id="reset" class="float_icon material-icons" title="重置">loop</i>
+				<br>
+			</div>
+			<h3>关于</h3>
+				<h4>to be filled</h4> 
+				<pre>introduce, instruction for advance config, sponsor</pre>
+		</div>
+	<script src="js/options.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+   "manifest_version": 2,
+
+   "name": "MyToolBox",
+   "version": "1.0",
+   "description": "多引擎搜索，自定义主页, 导出页面为 MHTML",
+   "homepage_url": "https://github.com/Landius/MyToolBox",
+   "permissions": [ "contextMenus", "tabs", "storage", "notifications", "pageCapture"],
+   "options_page": "options.html",
+   "chrome_url_overrides" : {
+    "newtab": "newtab.html"
+   },
+   "icons": {
+      "128": "images/logo128x128.png",
+      "16": "images/logo16x16.png",
+      "48": "images/logo48x48.png"
+   },
+
+   "browser_action": {
+      "default_icon": "images/logo48x48.png",
+      "default_popup": "popup.html",
+      "default_title": "MyToolBox"
+   },
+
+   "background": {
+      "scripts": ["js/fileSaver.js", "js/background.js"]
+   }
+}

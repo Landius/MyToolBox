@@ -17,6 +17,13 @@ function data2Config(data) {
 }
 
 function createCM(config) {
+    // create toobar icon context menu
+    chrome.contextMenus.create({
+        'title': 'MyToolBox CFG',
+        'id': 'mytoolbox_cfg',
+        'contexts': ['browser_action'],
+        'onclick': openOptionsPage
+    });
     // create context menu
     var root = chrome.contextMenus.create({
         // note that %s in title will be replaced to selected text.
@@ -50,6 +57,11 @@ function createCM(config) {
             'onclick' : search
         });
     }
+}
+
+function openOptionsPage(){
+    var OptionPageUrl = './options.html';
+    chrome.tabs.create({'url': OptionPageUrl, 'active': true});
 }
 
 function search(info, tab) {

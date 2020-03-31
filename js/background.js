@@ -1,7 +1,8 @@
 function config2Data(config) {
     var data = {};
     var configStr = JSON.stringify(config);
-    var chunkSize = chrome.storage.sync.QUOTA_BYTES_PER_ITEM - 1024;
+    // chrome.storage.sync.QUOTA_BYTES_PER_ITEM is not defined in firefox, thus use static value instead
+    var chunkSize = 8192 - 1024;
     for(var i = 0; i*chunkSize < configStr.length; i++) {
         data[i] = configStr.substring(i*chunkSize, (i+1)*chunkSize);
     }

@@ -47,6 +47,7 @@ function search() {
         url = this.getAttribute('href');
     }
     window.open(url);
+    window.close();
 }
 addSearchEngines();
 chrome.runtime.sendMessage({cmd: 'get_emoji'}, function(emoji){

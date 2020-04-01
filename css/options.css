@@ -108,6 +108,16 @@ input:focus{
     margin: 5px 0;
 }
 
+/*drag & sort style*/
+.item,
+#target *{
+    cursor: move;
+}
+
+.other-option{
+    margin: 5px 0;
+}
+
 /********* material icon *********/
 
 @font-face {

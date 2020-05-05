@@ -1,4 +1,7 @@
 @charset "utf-8";
+* {
+    text-shadow: 0px 0px 1px #ACACAC;
+}
 body {
     font-size: 14px;
     font-weight: normal;
@@ -7,7 +10,6 @@ body {
     padding: 25px 0 0;
     vertical-align: baseline;
     background: #fff;
-    text-shadow: 0px 0px 1px #ACACAC;
 }
 h1 {
     font-size: 26px;
@@ -16,23 +18,16 @@ h1 {
     margin: 0 0 10px;
 }
 a {
+    text-decoration: none;
     color: #0d63e3;
     padding: 2px 4px 4px 4px;
     border-radius: 2px;
 }
-a: link {
- text-decoration: none;
-}
-a: visited {
- text-decoration: none;
-}
-a: hover {
+a:hover {
  background-color: #C4E1FF;
 }
-a: active {
- text-decoration: none;
-}
-.header, .links {
+.header,
+.links {
     width: 700px;
     margin: 15px auto;
     padding: 2px;
@@ -101,7 +96,7 @@ a: active {
     margin: 0;
     display: block;
 }
-.sites dl: nth-child(even) {
+.sites dl:nth-child(even) {
     background: #f8f8f8;
     border-top: 1px solid #f2f2f2;
     border-bottom: 1px solid #f2f2f2;

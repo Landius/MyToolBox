@@ -78,7 +78,8 @@ function init() {
             'HIDENAV': false,
             'SITES': [
                 {'GROUP':'默认','NAME':'Baidu','URL':'https://www.baidu.com'}
-            ]
+            ],
+            'STYLE': ''
         },
         'SEARCH': {
             'PREFIX':'搜索『%s』',

@@ -22,11 +22,13 @@ function renderHTML(config) {
 		addItem(enginesNode, engines[i]);
 	}
 	// fill sites config
-	$('#hide-nav').value = config.SEARCH.HIDENAV;
+	$('#hide-nav').checked = config.NEWTAB.HIDENAV;
 	sitesNode.innerHTML = '';
 	for (var j in sites) {
 		addItem(sitesNode, sites[j]);
 	}
+	// fill style config
+	$('#style-input').value = config.NEWTAB.STYLE;
 	// add event listener
 	main.onclick = null;
 	main.onmousedown = null;
@@ -121,8 +123,9 @@ function saveConfig(){
 	};
 	var engineItems = $$('#engines .item');
 	var siteItems = $$('#sites .item');
-	newConfig.NEWTAB['HIDENAV'] = $('#hide-nav').checked;
 	newConfig.SEARCH['PREFIX'] = $('#prefix').value;
+	newConfig.NEWTAB['HIDENAV'] = $('#hide-nav').checked;
+	newConfig.NEWTAB['STYLE'] = $('#style-input').value;
 	[].forEach.call(engineItems, (v, i, a)=>{
 		var group = v.children[0].value;
 		var name = v.children[1].value;

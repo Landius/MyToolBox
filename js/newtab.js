@@ -71,7 +71,7 @@ function renderHtml(config){
     Object.keys(rawHtml).forEach(function(catalog){
     	HTML += ('<dl><dt>' + catalog + '</dt>' + rawHtml[catalog] + '</dl>');
     });
-
+	HTML += '<style>' + config.NEWTAB.STYLE + '</style>';
     document.querySelector('.sites').innerHTML = HTML;
 }
 

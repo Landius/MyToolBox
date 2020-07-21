@@ -1,6 +1,12 @@
-# todo
+# My Tool Box
 
 > A firefox portion of my older chrome extension, allows you to search with specific engine via popup page or contextmenu, and customize your newtab page with your favorite site.
+
+## use
+
+- HTML
+- CSS
+- Pure Javascript and web extension api
 
 ## feature
 
@@ -13,3 +19,4 @@ ps: you can modify search engine, new tab sites and style in option page.
 ## to-do
 
 - add feature: run script via context menu.
+- rewrite the code with ES6 or Typescript?

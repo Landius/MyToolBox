@@ -20,3 +20,4 @@ ps: you can modify search engine, new tab sites and style in option page.
 
 - add feature: run script via context menu.
 - rewrite the code with ES6 or Typescript?
+- use browser specific setting instead of applications in manifest.json

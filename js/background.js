@@ -86,7 +86,7 @@ function init() {
             'ENGINES':[
                 {'GROUP':'网页','NAME':'谷歌','URL':'https://www.google.com/search?newwindow=1&q=%s'},
                 {'GROUP':'网页','NAME':'维基','URL':'https://zh.wikipedia.org/wiki/%s'},
-                {'GROUP':'网页','NAME':'百科','URL':'http://baike.baNAMEu.com/search?word=%s'},
+                {'GROUP':'网页','NAME':'百科','URL':'http://baike.baidu.com/search?word=%s'},
                 {'GROUP':'网页','NAME':'知乎','URL':'https://www.zhihu.com/search?type=content&q=%s'},
                 {'GROUP':'网页','NAME':'微信','URL':'http://weixin.sogou.com/weixin?type=2&query=%s'},
                 {'GROUP':'开发','NAME':'MDN','URL':'https://developer.mozilla.org/zh-CN/search?q=%s'},

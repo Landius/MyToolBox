@@ -311,7 +311,7 @@ function init() {
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         switch(request.cmd) {
             case 'get_emoji':
-                sendResponse(emoji[Math.round(Math.random()*emoji.length)]);
+                sendResponse(emoji[Math.floor(Math.random()*emoji.length)]);
                 break;
             case 'get_config':
                 sendResponse(cachedConfig);

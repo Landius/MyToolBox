@@ -1,6 +1,7 @@
 ﻿@charset "utf-8";
 body {	
-	font-size: 75%;
+	font-size: 12px;
+    font-family: 'sans-serif';
 	color: #666;
 	margin:5px;
 	padding:0;

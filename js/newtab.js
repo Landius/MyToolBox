@@ -4,7 +4,7 @@ function handleClicking(){
         // invoke searching
 		var searchInput = document.getElementById('search-input').value;
 		if(searchInput){
-			if(e.target.id == 'google-btn'){
+			if(e.target.id == 'search-input' || e.target.id == 'google-btn'){
 				searchInput = "https://www.google.com/search?newwindow=1&q=" + searchInput;
 			}else{
 				searchInput = "https://www.baidu.com/s?ie=UTF-8&wd=" + searchInput;
@@ -24,6 +24,11 @@ function handleClicking(){
 
 	document.getElementById('google-btn').addEventListener('click', search);
 	document.getElementById('baidu-btn').addEventListener('click', search);
+	document.getElementById('search-input').addEventListener('keyup', e=>{
+		if(e.key.toLowerCase() == 'enter'){
+			search(e);
+		}
+	});
 	document.body.addEventListener('click', (e)=>{
 		if(e.target.tagName == "A"){
             e.preventDefault();
@@ -34,7 +39,7 @@ function handleClicking(){
 	});
 
     // show & hide navigation sites
-	document.querySelector("body > div.header").addEventListener('click', ()=>{
+	document.querySelector("#time-wr > time").addEventListener('click', ()=>{
 		var navSites = document.querySelector("body > div.sites");
 		if(navSites.style.display == 'none'){
 			navSites.style.display = 'block';
@@ -75,11 +80,28 @@ function renderHtml(config){
     document.querySelector('.sites').innerHTML = HTML;
 }
 
+function initClock() {
+	const timeEl = document.querySelector('#time-wr > time');
+	let timeStr = '';
+	updateTime();
+	const itv = setInterval(updateTime, 1000);
+	function updateTime(){
+		const date = new Date();
+        let h = date.getHours();
+        let m = date.getMinutes();
+        h = (h < 10 ? '0' + h : '' + h);
+        m = (m < 10 ? '0' + m : '' + m);
+		timeStr = (timeStr.includes(':') ? (h + ' ' + m) : (h + ':' + m));
+		timeEl.innerText = timeStr;
+	}
+}
+
 function init(){
+	initClock();
 	new Promise(getConfig).then(function(config){
 		renderHtml(config);
 		handleClicking();
-	}).catch(init);
+	});
 }
 
 init();

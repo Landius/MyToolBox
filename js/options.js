@@ -83,13 +83,13 @@ function saveText(txt,filename){
 	var a = document.getElementById('save_text');
 	if (a == null) {
 		a = document.createElement('a');
-		a.setAttribute('target','_blank');
 		a.setAttribute('id', 'save_text');
 		a.style.display="none";
 		document.body.appendChild(a);
 	}
-	a.setAttribute('href','data:text/html;utf-8,'+txt);
-	a.setAttribute('download',filename);
+	var blobObj = new Blob([txt], {type: 'text/plain'});
+	a.setAttribute('href', URL.createObjectURL(blobObj));
+	a.setAttribute('download', filename);
 	a.click();	
 }
 function exportData(config){

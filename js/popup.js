@@ -28,6 +28,13 @@ function addSearchEngines(){
     for (var i = 0; i < search_btn.length; i++) {
         search_btn[i].addEventListener('click', search, false);
     }
+    // press enter for instant search
+    var search_box = document.getElementById("search_box");
+    search_box.addEventListener("keyup", e=>{
+        if(e.key === "Enter" && e.target.value !== "" && search_btn.length > 0){
+            search_btn[0].click();
+        }
+    });
   });
 }
 

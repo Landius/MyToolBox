@@ -7,7 +7,7 @@
      }
    },
    "name": "MyToolBox",
-   "version": "1.2.1",
+   "version": "1.2.2",
    "description": "多引擎搜索，自定义主页, 导出页面为 MHTML(chrome)",
    "homepage_url": "https://github.com/Landius/MyToolBox",
    "permissions": [ "contextMenus", "tabs", "storage", "notifications"],
@@ -28,5 +28,13 @@
 
    "background": {
       "scripts": ["js/background.js"]
+   },
+   "commands": {
+      "_execute_browser_action": {
+         "description": "打开搜索弹窗",
+         "suggested_key": {
+            "default": "Alt+Shift+S"
+         }
+      }
    }
 }

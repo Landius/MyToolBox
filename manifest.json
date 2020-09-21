@@ -7,10 +7,10 @@
      }
    },
    "name": "MyToolBox",
-   "version": "1.2.2",
+   "version": "1.3.0",
    "description": "多引擎搜索，自定义主页, 导出页面为 MHTML(chrome)",
    "homepage_url": "https://github.com/Landius/MyToolBox",
-   "permissions": [ "contextMenus", "tabs", "storage", "notifications"],
+   "permissions": [ "contextMenus", "tabs", "storage", "notifications", "management"],
    "chrome_url_overrides" : {
     "newtab": "newtab.html"
    },

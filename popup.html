@@ -5,82 +5,23 @@
 <title>CustomSearch</title>
 <meta name="keywords" content="search">
 <meta name="description" content="search anything you want">
-<style type="text/css">
-* {
-	margin: 0;
-	background-color: #f0ffff;
-	/* -webkit-tap-highlight-color: transparent !important; */
-	box-sizing: border-box;
-}
-html {
-	max-width: 450px;
-	font-size: 16px;
-    font-family: 'sans-serif';
-}
-body {
-	width: max-content;
-	padding: 1rem;
-	text-align: center;
-}
-#search_box {
-	padding: 8px;
-	text-align: left;
-	color: #555;
-	border: none;
-	border-radius: 2px;
-	box-shadow: 0 1px 2px 1px #def;
-	outline: none;
-	width: 100%;
-	max-width: 100%;
-}
-.search_card {
-	margin-bottom: 10px;
-}
-.fill-area {
-	padding: 5px;
-	border-radius: 2px;
-	box-shadow: 0 1px 2px 1px #dee;
-}
-/* .op_card:nth-child(odd) {
-	background-color: #eaf5f8;
-} */
-.op_card:nth-child(even){
-	background-color: #f3f3ff; 
-}
-.op_card {
-	text-align: left;
-}
-.btn {
-	border-radius: 2px;
-	display:inline-block;
-	color: #4455EE;
-	outline: none;
-	border: none;
-	background: transparent;
-	padding: 5px;
-	margin: 2px;
-	font-size: 0.8rem;
-	cursor: pointer;
-}
-.btn:hover {
-	transition-duration: 150ms;
-	background-color: #e3e3ef;
-}
-#footer, #footer>a {
-	text-decoration: none;
-	color: #afafaf;
-	font-size: 0.5rem;
-	margin: auto;
-}
-</style>
+<link rel="stylesheet" href="css/popup.css">
 </head>
 <body>
-
+<div id="search-page" class="page">
 <div class="search_card">
 <input type="text" name="search" id="search_box" placeholder="..." autocomplete="off" autofocus="autofocus">
 </div>
 <div class="fill-area" id="search-engine-area"></div>
-
+</div>
+<div id="ext-page" class="page">
+	<div class="container">
+	</div>
+</div>
+<div id="nav">
+	<div id="nav-search" class="nav-btn nav-btn-actived">搜索</div>
+	<div id="nav-ext" class="nav-btn">扩展</div>
+</div>
 <script type="text/javascript" src="js/popup.js"></script>
-
-</body></html>
+</body>
+</html>

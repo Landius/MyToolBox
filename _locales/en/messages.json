@@ -21,10 +21,10 @@
         "message": "Url"
     },
     "save_success": {
-        "message": "save success"
+        "message": "Save success"
     },
     "confirm_reset": {
-        "message": "reset all options?"
+        "message": "Reset all options?"
     },
     "newtab_title": {
         "message": "Newtab"
@@ -42,45 +42,45 @@
         "message": "Search engines"
     },
     "contextmenu_prefix": {
-        "message": "the prefix of contextmenu search"
+        "message": "The prefix of contextmenu search"
     },
     "add": {
-        "message": "add"
+        "message": "Add"
     },
     "sites": {
-        "message": "sites"
+        "message": "Sites"
     },
     "hide_sites_from_newtab": {
-        "message": "hide all sites from new tab"
+        "message": "Hide all sites from new tab"
     },
     "customize_style": {
-        "message": "customize CSS code"
+        "message": "Customize CSS code"
     },
     "import_export": {
-        "message": "import/export"
+        "message": "Import/Export"
     },
     "import_export_desc": {
         "message": "Note: imported data will override current preference"
     },
     "import_data": {
-        "message": "import data"
+        "message": "Import"
     },
     "export_data": {
-        "message": "export data"
+        "message": "Export"
     },
     "save": {
-        "message": "save"
+        "message": "Save"
     },
     "reset": {
-        "message": "reset"
+        "message": "Reset"
     },
     "about": {
-        "message": "about"
+        "message": "About"
     },
     "search": {
-        "message": "search"
+        "message": "Search"
     },
     "extension": {
-        "message": "extension"
+        "message": "Extension"
     }
 }

@@ -68,7 +68,6 @@ function openOptionsPage(){
 function search(info, tab) {
     var search = cachedConfig.SEARCH.ENGINES[info.menuItemId];
     var url = search.URL.replace('%s', encodeURIComponent(info.selectionText));
-    document.body.onkeydown = 
     chrome.tabs.create({'url': url, 'index': tab.index+1, 'active': true});
 }
 

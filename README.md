@@ -1,23 +1,22 @@
 # My Tool Box
 
-> A firefox portion of my older chrome extension, allows you to search with specific engine via popup page or contextmenu, and customize your newtab page with your favorite site.
+*MyToolBox* is a browser extension with various useful features. Supports Firefox and all Chromium-Based browsers.
 
-## use
+## Feature
 
-- HTML
-- CSS
-- Pure Javascript and web extension api
+1. search with specific engine from popup page (click the icon to show).
+2. search selected text with specific engine via context menu.
+3. customize your newtab page with your favorite sites.
+4. customize your newtab page with your CSS code.
+5. manage your extension via popup page. (not support in firefox, see [Bug 1282982](https://bugzilla.mozilla.org/show_bug.cgi?id=1282982))
 
-## feature
+## Privacy Policy
 
-1. search with specific engine by clicking the extension icon.
-2. select text and search it with specific engine via context menu.
-3. customize your newtab page with your favorite sites, and style.
-
-ps: you can modify search engine, new tab sites and style in option page.
-
-## to-do
-
-- add feature: run script via context menu.
-- rewrite the code with ES6 or Typescript?
-- use browser specific setting instead of applications in manifest.json
+1. *MyToolBox* is an non-profit opensource project. ([link](https://github.com/Landius/MyToolBox))
+2. *MyToolBox* won't send any user data to any person or organization. All data are saved and synchronized via the extension API `chrome.storage.sync`.
+3. *MyToolBox* needs permissions below to work:
+    - `chrome_url_overrides`: customize your newtab page.
+    - `storage`: save and sync user data.
+    - `management`: enable/disable extensions.
+    - `notification`: show notifications.
+    - `contextMenus`: search selected text via context menu.

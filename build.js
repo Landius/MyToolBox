@@ -29,7 +29,7 @@ if(fxFlag){
 
 // archive
 let zip = new JSZip();
-let ignoreRules = ['.git', 'dev_modules', 'build.js', 'manifest.json.bk', 'MyToolBox.zip', MyToolBox.fx.zip];
+let ignoreRules = ['.git', 'dev_modules', 'build.js', 'manifest.json.bk', 'MyToolBox.zip', 'MyToolBox.fx.zip'];
 const cwd = process.cwd();
 
 archive('', zip);

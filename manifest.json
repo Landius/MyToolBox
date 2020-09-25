@@ -1,8 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "MyToolBox",
-  "version": "1.4.0",
-  "description": "多引擎搜索，自定义主页, 导出页面为 MHTML(chrome)",
+  "default_locale": "en",
+  "name": "__MSG_name__",
+  "version": "1.5.0",
+  "description": "__MSG_desc__",
   "homepage_url": "https://github.com/Landius/MyToolBox",
   "permissions": [
     "contextMenus",
@@ -19,12 +20,12 @@
   "browser_action": {
     "default_icon": "images/logo48x48.png",
     "default_popup": "popup.html",
-    "default_title": "MyToolBox"
+    "default_title": "__MSG_name__"
   },
   "background": { "scripts": ["js/background.js"] },
   "commands": {
     "_execute_browser_action": {
-      "description": "打开搜索弹窗",
+      "description": "__MSG_hotkey_desc__",
       "suggested_key": { "default": "Alt+Shift+S" }
     }
   }

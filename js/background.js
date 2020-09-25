@@ -72,34 +72,58 @@ function search(info, tab) {
 }
 
 function init() {
-    var defaultConfig = {
-        'NEWTAB': {
-            'HIDENAV': false,
-            'SITES': [
-                {'GROUP':'默认','NAME':'Baidu','URL':'https://www.baidu.com'}
-            ],
-            'STYLE': ''
-        },
-        'SEARCH': {
-            'PREFIX':'搜索『%s』',
-            'ENGINES':[
-                {'GROUP':'网页','NAME':'谷歌','URL':'https://www.google.com/search?newwindow=1&q=%s'},
-                {'GROUP':'网页','NAME':'维基','URL':'https://zh.wikipedia.org/wiki/%s'},
-                {'GROUP':'网页','NAME':'百科','URL':'http://baike.baidu.com/search?word=%s'},
-                {'GROUP':'网页','NAME':'知乎','URL':'https://www.zhihu.com/search?type=content&q=%s'},
-                {'GROUP':'网页','NAME':'微信','URL':'http://weixin.sogou.com/weixin?type=2&query=%s'},
-                {'GROUP':'开发','NAME':'MDN','URL':'https://developer.mozilla.org/zh-CN/search?q=%s'},
-                {'GROUP':'开发','NAME':'掘金','URL':'https://juejin.im/search?query=%s'},
-                {'GROUP':'开发','NAME':'Github','URL':'https://github.com/search?q=%s'},
-                {'GROUP':'视频','NAME':'优酷','URL':'http://www.soku.com/search_vNAMEeo/q_%s'},
-                {'GROUP':'视频','NAME':'BiliBili','URL':'http://search.bilibili.com/all?keyword=%s'},
-                {'GROUP':'视频','NAME':'YouTube','URL':'https://www.youtube.com/results?search_query=%s'},
-                {'GROUP':'购物','NAME':'淘宝','URL':'https://s.taobao.com/search?q=%s'},
-                {'GROUP':'购物','NAME':'京东','URL':'https://search.jd.com/Search?keyword=%s'},
-                {'GROUP':'购物','NAME':'什么值得买','URL':'http://search.smzdm.com/?s=%s'}
-            ] 
-        }
-    };
+    var defaultConfig;
+    // set default config by locale
+    if(chrome.i18n.getMessage('@@ui_locale') === 'zh_CN'){
+        defaultConfig = {
+            'NEWTAB': {
+                'HIDENAV': false,
+                'SITES': [
+                    {'GROUP':'默认','NAME':'谷歌','URL':'https://www.google.com'}
+                ],
+                'STYLE': ''
+            },
+            'SEARCH': {
+                'PREFIX':'搜索『%s』',
+                'ENGINES':[
+                    {'GROUP':'网页','NAME':'谷歌','URL':'https://www.google.com/search?newwindow=1&q=%s'},
+                    {'GROUP':'网页','NAME':'百度','URL':'https://www.baidu.com/s?ie=UTF-8&wd=%s'},
+                    {'GROUP':'网页','NAME':'维基','URL':'https://zh.wikipedia.org/wiki/%s'},
+                    {'GROUP':'开发','NAME':'MDN','URL':'https://developer.mozilla.org/zh-CN/search?q=%s'},
+                    {'GROUP':'开发','NAME':'Github','URL':'https://github.com/search?q=%s'},
+                    {'GROUP':'视频','NAME':'优酷','URL':'http://www.soku.com/search_vNAMEeo/q_%s'},
+                    {'GROUP':'视频','NAME':'BiliBili','URL':'http://search.bilibili.com/all?keyword=%s'},
+                    {'GROUP':'视频','NAME':'YouTube','URL':'https://www.youtube.com/results?search_query=%s'},
+                    {'GROUP':'购物','NAME':'淘宝','URL':'https://s.taobao.com/search?q=%s'},
+                    {'GROUP':'购物','NAME':'京东','URL':'https://search.jd.com/Search?keyword=%s'},
+                    {'GROUP':'购物','NAME':'什么值得买','URL':'http://search.smzdm.com/?s=%s'}
+                ]
+            }
+        };
+    }else{
+        defaultConfig = {
+            'NEWTAB': {
+                'HIDENAV': false,
+                'SITES': [
+                    {'GROUP':'default','NAME':'google','URL':'https://www.google.com'}
+                ],
+                'STYLE': ''
+            },
+            'SEARCH': {
+                'PREFIX':'Search『%s』',
+                'ENGINES':[
+                    {'GROUP':'Search','NAME':'Google','URL':'https://www.google.com/search?newwindow=1&q=%s'},
+                    {'GROUP':'Search','NAME':'Wikipedia','URL':'https://zh.wikipedia.org/wiki/%s'},
+                    {'GROUP':'Dev','NAME':'MDN','URL':'https://developer.mozilla.org/zh-CN/search?q=%s'},
+                    {'GROUP':'Dev','NAME':'Github','URL':'https://github.com/search?q=%s'},
+                    {'GROUP':'Dev','NAME':'StackOverFlow','URL':'https://stackoverflow.com/search?q=%s'},
+                    {'GROUP':'Video','NAME':'YouTube','URL':'https://www.youtube.com/results?search_query=%s'},
+                    {'GROUP':'Video','NAME':'Vimeo','URL':'https://vimeo.com/search?q=%s'},
+                ]
+            }
+        };
+    }
+    // add some emoji
     var emoji = [
         '(>_<)',
         '⊙▂⊙',
@@ -109,11 +133,9 @@ function init() {
         'ヽ(･∀･)メ',
         'l(｡-ω-)l',
         '(๑•̀ㅂ•́)و✧',
-        '＼（￣︶￣）／',
         'o(*≧▽≦)ツ',
         'ヾ(≧▽≦*)o',
         '（；´д｀）ゞ',
-        '(っ*´Д`)っ',
         'o(≧口≦)o',
         'ヾ(´∀`o)+',
         '(＞﹏＜)',
@@ -122,48 +144,33 @@ function init() {
         '(๑´╹‸╹`๑)',
         '（＃￣～￣＃）',
         '(・-・*)',
-        '(￣△￣；)',
-        '(。_。)',
         '(¯^¯ )',
         '<(ˉ^ˉ)>',
         'Σ(っ °Д °;)っ',
         'ʅ（´◔౪◔）ʃ',
-        '(*˘︶˘*)',
         '<(￣ˇ￣)/',
-        '<(￣︶￣)>',
         'v(￣︶￣)y',
         '(#｀-_ゝ-)',
-        '(。﹏。)',
-        '(．_．〃）ゝ…',
         'o(￣ε￣*)',
         '(〃▔□▔)',
         '(°ー°〃)',
         '(๑-﹏-๑)',
         '(⊙﹏⊙)',
-        '(。﹏。*)',
-        '(⊙﹏⊙)',
         '(´◔౪◔)۶',
         '( ´◔ ‸◔`)',
         '(ﾟДﾟ*)ﾉ',
-        '︿(￣︶￣)︿',
         '(*￣3￣)╭',
         '_(:з」∠)_',
-        '(☆´益`)c',
         '[]~(￣▽￣)~*',
         'φ(゜▽゜*)♪',
         '( σ˙ω˙)σ',
         '╰(￣▽￣)╭',
-        'o(￣▽￣)ｄ',
-        'U•ェ•*U',
         '( ˘•ω•˘ )',
         '( ￣▽￣)〃',
         'o(*≧▽≦)ツ',
         'φ(≧ω≦*)♪',
-        '(。_。)',
         '(・-・*)',
         '(๑´ڡ`๑)',
-        '（゜▽＾*））',
-        '(>＿<)}}',
         '≡￣﹏￣≡',
         '(￣∇￣;)',
         '(╯▽╰ )',
@@ -172,16 +179,11 @@ function init() {
         'థ ౪ థ',
         '(｡ŏ_ŏ)',
         'Ծ‸Ծ',
-        'o(￣ヘ￣o＃)',
-        '（︶︿︶）',
-        '(；′⌒`)',
-        'o(￣ヘ￣o＃)',
         'ヾ(๑╹◡╹)ﾉ〃♡',
         '（。－_－。）',
         '(¬_¬)',
         '(→_→)',
         '(_　_)。゜zｚＺ',
-        '(￣～￣) 嚼！',
         '(ง •_•)ง',
         '٩( ˙ω˙ )و',
         '٩(๑`^´๑)۶',
@@ -192,19 +194,14 @@ function init() {
         'Σ(｀д′*ノ)ノ',
         '╰(*°▽°*)╯',
         '（´Д`）',
-        '┗|*｀0′*|┛',
-        'o(′益`)o',
         'ヾ(●゜ⅴ゜)ﾉ',
         'ಠ_ಠ',
-        '(￣﹁￣)',
         '（¯﹃¯）',
         '(*Ծ﹏Ծ)ぐ',
-        '(٥﹏٥` )',
         'Q_Q',
         'ಥ_ಥ',
         '┭┮﹏┭┮',
         'ヾ(｡>﹏<｡)ﾉﾞ',
-        '（┬＿┬）',
         '(*^▽^*)',
         '︸_︸',
         'o(ﾟ∀ﾟ)o',
@@ -217,9 +214,7 @@ function init() {
         '（┬＿┬）',
         '（。人。）',
         '=￣ω￣=',
-        '（´v｀）',
         '(๑¯∀¯๑)',
-        'o(*￣︶￣*)o',
         'o(￣ˇ￣)o',
         'o(=•ェ•=)m',
         '╮（╯＿╰）╭',
@@ -258,8 +253,6 @@ function init() {
         '＞﹏＜',
         '(☆＿☆)',
         '<(￣▽￣)/',
-        '(← ← )围观！',
-        '围观！( → →)',
         'ಠ__ಠ',
         '(。﹏。*)',
         '~(～￣▽￣)～',

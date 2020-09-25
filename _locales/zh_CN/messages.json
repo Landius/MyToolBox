@@ -1,0 +1,86 @@
+{
+    "name": {
+        "message": "MyToolBox",
+        "description": "extension name"
+    },
+    "desc": {
+        "message": "多功能工具箱",
+        "description": "extension description"
+    },
+    "hotkey_desc": {
+        "message": "打开搜索弹窗",
+        "description": "hotkey description"
+    },
+    "placeholder_group": {
+        "message": "分组"
+    },
+    "placeholder_name": {
+        "message": "名称"
+    },
+    "placeholder_url": {
+        "message": "地址"
+    },
+    "save_success": {
+        "message": "数据保存成功"
+    },
+    "confirm_reset": {
+        "message": "确认重置所有数据？"
+    },
+    "newtab_title": {
+        "message": "新标签页"
+    },
+    "newtab_google": {
+        "message": "谷歌一下"
+    },
+    "newtab_baidu": {
+        "message": "百度几下"
+    },
+    "option": {
+        "message": "选项"
+    },
+    "search_engines": {
+        "message": "搜索引擎"
+    },
+    "contextmenu_prefix": {
+        "message": "右键搜索前缀"
+    },
+    "add": {
+        "message": "添加"
+    },
+    "sites": {
+        "message": "网站"
+    },
+    "hide_sites_from_newtab": {
+        "message": "新标签页隐藏网站（简洁模式）"
+    },
+    "customize_style": {
+        "message": "自定义样式"
+    },
+    "import_export": {
+        "message": "导入/导出"
+    },
+    "import_export_desc": {
+        "message": "注意：导入的数据会覆盖当前设置"
+    },
+    "import_data": {
+        "message": "导入数据"
+    },
+    "export_data": {
+        "message": "导出数据"
+    },
+    "save": {
+        "message": "保存"
+    },
+    "reset": {
+        "message": "重置"
+    },
+    "about": {
+        "message": "关于"
+    },
+    "search": {
+        "message": "搜索"
+    },
+    "extension": {
+        "message": "扩展"
+    }
+}

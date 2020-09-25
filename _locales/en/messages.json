@@ -1,0 +1,86 @@
+{
+    "name": {
+        "message": "MyToolBox",
+        "description": "extension name"
+    },
+    "desc": {
+        "message": "extension with various useful feature",
+        "description": "extension description"
+    },
+    "hotkey_desc": {
+        "message": "open popup page",
+        "description": "hotkey description"
+    },
+    "placeholder_group": {
+        "message": "Group"
+    },
+    "placeholder_name": {
+        "message": "Name"
+    },
+    "placeholder_url": {
+        "message": "Url"
+    },
+    "save_success": {
+        "message": "save success"
+    },
+    "confirm_reset": {
+        "message": "reset all options?"
+    },
+    "newtab_title": {
+        "message": "Newtab"
+    },
+    "newtab_google": {
+        "message": "Google"
+    },
+    "newtab_baidu": {
+        "message": "Baidu"
+    },
+    "option": {
+        "message": "Options"
+    },
+    "search_engines": {
+        "message": "Search engines"
+    },
+    "contextmenu_prefix": {
+        "message": "the prefix of contextmenu search"
+    },
+    "add": {
+        "message": "add"
+    },
+    "sites": {
+        "message": "sites"
+    },
+    "hide_sites_from_newtab": {
+        "message": "hide all sites from new tab"
+    },
+    "customize_style": {
+        "message": "customize CSS code"
+    },
+    "import_export": {
+        "message": "import/export"
+    },
+    "import_export_desc": {
+        "message": "Note: imported data will override current preference"
+    },
+    "import_data": {
+        "message": "import data"
+    },
+    "export_data": {
+        "message": "export data"
+    },
+    "save": {
+        "message": "save"
+    },
+    "reset": {
+        "message": "reset"
+    },
+    "about": {
+        "message": "about"
+    },
+    "search": {
+        "message": "search"
+    },
+    "extension": {
+        "message": "extension"
+    }
+}

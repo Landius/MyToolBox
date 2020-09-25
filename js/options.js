@@ -68,10 +68,15 @@ function renderHTML(config) {
 	}
 }
 function addItem(target, item) {
+	var placeHolder = {
+		group: chrome.i18n.getMessage('placeholder_group'),
+		name: chrome.i18n.getMessage('placeholder_name'),
+		url: chrome.i18n.getMessage('placeholder_url')
+	};
 	var template = `<div class="item">
-			<input type="text" class="group-input" placeholder="分组" value="group-holder"></input>
-			<input type="text" class="name-input" placeholder="名称" value="name-holder"></input>
-			<input type="url" class= "url-input" placeholder="链接" value="url-holder"></input>
+			<input type="text" class="group-input" placeholder="${placeHolder.group}" value="group-holder"></input>
+			<input type="text" class="name-input" placeholder="${placeHolder.name}" value="name-holder"></input>
+			<input type="url" class= "url-input" placeholder="${placeHolder.url}" value="url-holder"></input>
 			<i class="delete-btn material-icons">delete</i>
 	</div>`;
 	template = template.replace('group-holder', item.GROUP);
@@ -152,12 +157,12 @@ function saveConfig(){
 			type: 'basic',
 			iconUrl: './images/logo128x128.png',
 			title: 'CustomSearch',
-			message: '设置保存成功'
+			message: chrome.i18n.getMessage('save_success')
 		});
 	});
 }
 function resetConfig(){
-	var choice = confirm('这会清除所有数据，确定吗？');
+	var choice = confirm(chrome.i18n.getMessage('confirm_reset'));
 	if(choice){
 		chrome.runtime.sendMessage({'cmd': 'reset_config'}, function(){
 			location.reload();

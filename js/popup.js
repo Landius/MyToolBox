@@ -98,11 +98,8 @@ function renderExtPage(){
         let rawHtml = '';
         for(id in exts){
             rawHtml += `<div class="ext-item">
-                <span class="ext-name">
-                    <!--<img class="ext-icon" src="${exts[id].icon}">-->
-                    <input type="checkbox" class="ext-checkbox" data-enabled="${exts[id].enabled}" data-id="${id}">
-                    ${exts[id].name}
-                </span>
+                <input type="checkbox" class="ext-checkbox" data-enabled="${exts[id].enabled}" data-id="${id}">
+                <span class="ext-name">${exts[id].name}</span>
             </div>`;
         }
         // mount
@@ -150,6 +147,7 @@ function init(){
             switch (t.id) {
                 case 'nav-search':
                     document.querySelector('#search-page').style.display = 'block';
+                    document.querySelector('#search_box').focus();
                     break;
                 case 'nav-ext':
                     document.querySelector('#ext-page').style.display = 'block';

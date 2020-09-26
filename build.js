@@ -64,9 +64,11 @@ function archive(relPath, zip){
         if(item.isDirectory()){
             archive(newRelPath, zip);
         }else if(item.isFile()){
-            console.log(newRelPath, newFullPath);
+            // use *nix style path for better compatibility
+            const unixRelPath = newRelPath.replace(/\\/g, '/');
             const data = fs.readFileSync(newFullPath);
-            zip.file(newRelPath, data);
+            zip.file(unixRelPath, data);
+            console.log('added file: ' + unixRelPath);
         }else{
             console.warn(newFullPath, ' is neither a dir nor a file.');
         }

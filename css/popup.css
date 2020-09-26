@@ -30,6 +30,9 @@ body {
     color: #2333;
     user-select: none;
 }
+.nav-btn:hover{
+	color: #233C;
+}
 .nav-btn-actived{
     color: #233;
 }

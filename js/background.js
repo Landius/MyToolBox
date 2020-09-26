@@ -20,7 +20,7 @@ function data2Config(data) {
 function createCM(config) {
     // create toobar icon context menu
     chrome.contextMenus.create({
-        'title': 'MyToolBox CFG',
+        'title': chrome.i18n.getMessage('option'),
         'id': 'mytoolbox_cfg',
         'contexts': ['browser_action'],
         'onclick': openOptionsPage

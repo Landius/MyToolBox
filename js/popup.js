@@ -152,6 +152,8 @@ function init(){
                 case 'nav-ext':
                     document.querySelector('#ext-page').style.display = 'block';
                     break;
+                case 'nav-opt':
+                    chrome.tabs.create({url: './options.html', active: true});
             }
         }
     });

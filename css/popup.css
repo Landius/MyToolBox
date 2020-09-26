@@ -80,7 +80,8 @@ body {
 	font-size: 0.8rem;
 	cursor: pointer;
 }
-.btn:hover {
+.btn:hover,
+.btn:focus {
 	transition-duration: 150ms;
 	background-color: #e3e3ef;
 }

@@ -101,6 +101,9 @@ function init(){
 	new Promise(getConfig).then(function(config){
 		renderHtml(config);
 		handleClicking();
+	}).catch(err=>{
+		// reload page if getConfig failed
+        setTimeout(()=>location.reload(), 300);
 	});
 }
 

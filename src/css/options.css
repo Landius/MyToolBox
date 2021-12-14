@@ -43,6 +43,7 @@ textarea#style-input{
     outline-style: none;
     margin: 0;
     font-family: monospace;
+    resize: vertical;
 }
 
 #save_area {

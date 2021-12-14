@@ -4,7 +4,7 @@
         "description": "extension name"
     },
     "desc": {
-        "message": "extension with various useful feature",
+        "message": "search via contextmenu, search via popup page, customize new tab, extension management",
         "description": "extension description"
     },
     "hotkey_desc": {
@@ -54,7 +54,7 @@
         "message": "Hide all sites from new tab"
     },
     "customize_style": {
-        "message": "Customize CSS code"
+        "message": "newtab CSS"
     },
     "import_export": {
         "message": "Import/Export"

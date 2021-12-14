@@ -1,14 +1,18 @@
 # My Tool Box
 
-*MyToolBox* is a browser extension with various useful features. Supports Firefox and all Chromium-Based browsers.
+English / [中文](./README.zh.md)
 
-## Feature
+## Features
 
-1. search with specific engine from popup page (click the icon to show).
+1. search with specific engine from popup page.
 2. search selected text with specific engine via context menu.
-3. customize your newtab page with your favorite sites.
+3. customize your newtab page with your favorite sites. (if you don't like it, you can change this in your browser setting)
 4. customize your newtab page with your CSS code.
-5. manage your extension via popup page. (not support in firefox, see [Bug 1282982](https://bugzilla.mozilla.org/show_bug.cgi?id=1282982))
+5. enable/disable your extension via popup page. (not support in firefox, see [Bug 1282982](https://bugzilla.mozilla.org/show_bug.cgi?id=1282982))
+
+## screenshot
+
+![screenshot](./screenshot.jpg)
 
 ## Privacy Policy
 

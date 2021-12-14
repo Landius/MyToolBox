@@ -6,13 +6,23 @@ const args = process.argv;
 
 // handle fx flag
 let fxFlag = false;
+const manifestPath = './src/manifest.json';
 if(args.length > 3){
     printUsage();
 }else if(args.length === 3){
-    args[2] === 'fx' ? fxFlag = true : printUsage();
+    switch(args[2]){
+        case 'firefox':
+            fxFlag = true;
+            break;
+        case 'chromium':
+            fxFlag = false;
+            break;
+        default:
+            printUsage();
+    }
 }
 if(fxFlag){
-    fs.copyFileSync('./manifest.json', './manifest.json.bk');
+    fs.copyFileSync(manifestPath, manifestPath + '.bk');
     const firefoxEntry = {'browser_specific_settings': {
             "gecko": {
                 "id": "landius@github.com",
@@ -20,37 +30,37 @@ if(fxFlag){
             }
         }
     };
-    const manifest = JSON.parse(fs.readFileSync('./manifest.json', {encoding: 'utf8'}));
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, {encoding: 'utf8'}));
     for(key in firefoxEntry){
         manifest[key] = firefoxEntry[key];
     }
-    fs.writeFileSync('./manifest.json', JSON.stringify(manifest));
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest));
 }
 
 // archive
 let zip = new JSZip();
 let ignoreRules = ['.git', 'dev_modules', 'build.js', 'manifest.json.bk', 'MyToolBox.zip', 'MyToolBox.fx.zip'];
-const cwd = process.cwd();
+const archiveRoot = path.join(process.cwd(), 'src');
 
 archive('', zip);
 
 zip.generateAsync({type: 'nodebuffer'}).then(data=>{
     if(fxFlag){
         fs.writeFileSync('MyToolBox.fx.zip', data);
-        fs.unlinkSync('./manifest.json');
-        fs.renameSync('./manifest.json.bk', './manifest.json');
+        fs.unlinkSync(manifestPath);
+        fs.renameSync(manifestPath + '.bk', manifestPath);
     }else{
         fs.writeFileSync('MyToolBox.zip', data);
     }
 });
 
 function printUsage(){
-    console.log('Usage:\n  node build.js "build chrome extension"\n  node build.js fx "build firefox addon"');
+    console.log('Usage:\n  node build.js chromium "build chromium extension"\n  node build.js firefox "build firefox addon"');
     process.exit(1);
 }
 
 function archive(relPath, zip){
-    const fullPath = path.join(cwd, relPath);
+    const fullPath = path.join(archiveRoot, relPath);
     const files = fs.readdirSync(fullPath, {withFileTypes: true});
     itr_files:
     for(item of files){
@@ -68,7 +78,7 @@ function archive(relPath, zip){
             const unixRelPath = newRelPath.replace(/\\/g, '/');
             const data = fs.readFileSync(newFullPath);
             zip.file(unixRelPath, data);
-            console.log('added file: ' + unixRelPath);
+            console.log('added file to: ' + unixRelPath);
         }else{
             console.warn(newFullPath, ' is neither a dir nor a file.');
         }

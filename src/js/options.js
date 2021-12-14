@@ -151,6 +151,11 @@ function saveConfig(){
 			newConfig.NEWTAB.SITES.push({'GROUP': group, 'NAME': name, 'URL': url});
 		}
 	});
+	// Max storage size: 102400
+	if(JSON.stringify(newConfig).length * 2 > 102400){
+		alert("config data should be smaller than 100kB");
+		return;
+	}
 	renderHTML(newConfig);
 	chrome.runtime.sendMessage({'cmd': 'save_config', 'config': newConfig}, function(){
 		chrome.notifications.create(null, {

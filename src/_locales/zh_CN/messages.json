@@ -4,7 +4,7 @@
         "description": "extension name"
     },
     "desc": {
-        "message": "多功能工具箱",
+        "message": "右键菜单搜索，弹窗快速搜索，极简主页，扩展管理",
         "description": "extension description"
     },
     "hotkey_desc": {
@@ -54,7 +54,7 @@
         "message": "新标签页隐藏网站（简洁模式）"
     },
     "customize_style": {
-        "message": "自定义样式"
+        "message": "新标签页 CSS"
     },
     "import_export": {
         "message": "导入/导出"

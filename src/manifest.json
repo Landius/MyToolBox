@@ -36,11 +36,5 @@
                 "default": "Alt+Shift+S"
             }
         }
-    },
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "landius@github.com",
-            "strict_min_version": "68.0"
-        }
     }
 }

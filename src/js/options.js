@@ -30,6 +30,12 @@ function renderHTML(config) {
 	// fill style config
 	$('#style-input').value = config.NEWTAB.STYLE;
 	// add event listener
+	document.body.addEventListener('keydown', ev=>{
+		ev.preventDefault();
+		if(ev.key.toLocaleLowerCase() === 's' && ev.ctrlKey){
+			saveConfig();
+		}
+	});
 	main.onclick = null;
 	main.onmousedown = null;
 	main.onclick = (e)=>{

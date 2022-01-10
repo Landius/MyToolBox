@@ -31,8 +31,8 @@ function renderHTML(config) {
 	$('#style-input').value = config.NEWTAB.STYLE;
 	// add event listener
 	document.body.addEventListener('keydown', ev=>{
-		ev.preventDefault();
-		if(ev.key.toLocaleLowerCase() === 's' && ev.ctrlKey){
+		if(ev.key === 's' && ev.ctrlKey){
+			ev.preventDefault();
 			saveConfig();
 		}
 	});

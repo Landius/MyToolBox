@@ -62,6 +62,11 @@ function getConfig(resolve, reject){
 function renderHtml(config){
     rawHtml = {};
     HTML = '';
+	if(config.NEWTAB.STYLE !== ''){
+		let style = document.createElement('style');
+		style.innerText = config.NEWTAB.STYLE;
+		document.head.append(style);
+	}
     if(config.NEWTAB.HIDENAV == true){
         document.querySelector(".sites").style.display = "none";
     }
@@ -76,7 +81,7 @@ function renderHtml(config){
     Object.keys(rawHtml).forEach(function(catalog){
     	HTML += ('<dl><dt>' + catalog + '</dt>' + rawHtml[catalog] + '</dl>');
     });
-	HTML += '<style>' + config.NEWTAB.STYLE + '</style>';
+	// HTML += '<style>' + config.NEWTAB.STYLE + '</style>';
     document.querySelector('.sites').innerHTML = HTML;
 }
 

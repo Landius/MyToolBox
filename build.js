@@ -24,18 +24,8 @@ if(args.length > 3){
 if(fxFlag){
     fs.copyFileSync(manifestPath, manifestPath + '.bk');
     const manifest = JSON.parse(fs.readFileSync(manifestPath, {encoding: 'utf8'}));
-    // add firefox info
-    const firefoxEntry = {
-        'browser_specific_settings': {
-            "gecko": {
-                "id": "landius@github.com",
-                "strict_min_version": "68.0"
-            }
-        }
-    };
-    for(key in firefoxEntry){
-        manifest[key] = firefoxEntry[key];
-    }
+    // remove firefox entry
+    delete manifest.browser_specific_settings;
     // remove permission *management*
     manifest.permissions.splice(manifest.permissions.indexOf('management', 1));
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 4));

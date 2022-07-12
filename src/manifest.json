@@ -2,9 +2,15 @@
     "manifest_version": 2,
     "default_locale": "en",
     "name": "__MSG_name__",
-    "version": "1.6.2",
+    "version": "2.0.0",
     "description": "__MSG_desc__",
     "homepage_url": "https://github.com/Landius/MyToolBox",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "landius@github.com",
+            "strict_min_version": "68.0"
+        }
+    },
     "permissions": [
         "contextMenus",
         "storage",
@@ -25,9 +31,7 @@
         "default_title": "__MSG_name__"
     },
     "background": {
-        "scripts": [
-            "js/background.js"
-        ]
+        "page": "background.html "
     },
     "commands": {
         "_execute_browser_action": {

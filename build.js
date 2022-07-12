@@ -7,10 +7,10 @@ const args = process.argv;
 // handle fx flag
 let fxFlag = false;
 const manifestPath = './src/manifest.json';
-if(args.length > 3){
+if (args.length > 3) {
     printUsage();
-}else if(args.length === 3){
-    switch(args[2]){
+} else if (args.length === 3) {
+    switch (args[2]) {
         case 'firefox':
             fxFlag = true;
             break;
@@ -21,21 +21,11 @@ if(args.length > 3){
             printUsage();
     }
 }
-if(fxFlag){
+if (fxFlag === false) {
     fs.copyFileSync(manifestPath, manifestPath + '.bk');
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, {encoding: 'utf8'}));
-    // add firefox info
-    const firefoxEntry = {
-        'browser_specific_settings': {
-            "gecko": {
-                "id": "landius@github.com",
-                "strict_min_version": "68.0"
-            }
-        }
-    };
-    for(key in firefoxEntry){
-        manifest[key] = firefoxEntry[key];
-    }
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, { encoding: 'utf8' }));
+    // remove firefox entry
+    delete manifest.browser_specific_settings;
     // remove permission *management*
     manifest.permissions.splice(manifest.permissions.indexOf('management', 1));
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 4));
@@ -48,42 +38,43 @@ const archiveRoot = path.join(process.cwd(), 'src');
 
 archive('', zip);
 
-zip.generateAsync({type: 'nodebuffer'}).then(data=>{
-    if(fxFlag){
+zip.generateAsync({ type: 'nodebuffer' }).then(data => {
+    if (fxFlag) {
         fs.writeFileSync('MyToolBox.fx.zip', data);
         fs.unlinkSync(manifestPath);
         fs.renameSync(manifestPath + '.bk', manifestPath);
-    }else{
+    } else {
         fs.writeFileSync('MyToolBox.zip', data);
     }
 });
 
-function printUsage(){
-    console.log('Usage:\n  node build.js chromium "build chromium extension"\n  node build.js firefox "build firefox addon"');
+function printUsage() {
+    console.log(
+        'Usage:\n  node build.js chromium "build chromium extension"\n  node build.js firefox "build firefox addon"'
+    );
     process.exit(1);
 }
 
-function archive(relPath, zip){
+function archive(relPath, zip) {
     const fullPath = path.join(archiveRoot, relPath);
-    const files = fs.readdirSync(fullPath, {withFileTypes: true});
-    itr_files:
-    for(item of files){
+    const files = fs.readdirSync(fullPath, { withFileTypes: true });
+    itr_files: for (item of files) {
         // filter files by ignoreRules
-        for(rule of ignoreRules){
-            if(item.name.match(rule)) continue itr_files;
+        for (rule of ignoreRules) {
+            if (item.name.match(rule)) continue itr_files;
         }
         // recursive iteration
         const newFullPath = path.join(fullPath, item.name);
         const newRelPath = path.join(relPath, item.name);
-        if(item.isDirectory()){
+        if (item.isDirectory()) {
             archive(newRelPath, zip);
-        }else if(item.isFile()){
+        } else if (item.isFile()) {
             // use *nix style path for better compatibility
             const unixRelPath = newRelPath.replace(/\\/g, '/');
             const data = fs.readFileSync(newFullPath);
             zip.file(unixRelPath, data);
             console.log('added file to: ' + unixRelPath);
-        }else{
+        } else {
             console.warn(newFullPath, ' is neither a dir nor a file.');
         }
     }

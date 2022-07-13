@@ -26,8 +26,8 @@ if (fxFlag === false) {
     const manifest = JSON.parse(fs.readFileSync(manifestPath, { encoding: 'utf8' }));
     // remove firefox entry
     delete manifest.browser_specific_settings;
-    // remove permission *management*
-    manifest.permissions.splice(manifest.permissions.indexOf('management', 1));
+    // add permission *management*
+    manifest.permissions.push('management');
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 4));
 }
 

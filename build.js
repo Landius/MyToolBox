@@ -23,11 +23,11 @@ if (args.length > 3) {
 }
 if (fxFlag === false) {
     fs.copyFileSync(manifestPath, manifestPath + '.bk');
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, { encoding: 'utf8' }));
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, {encoding: 'utf8'}));
     // remove firefox entry
     delete manifest.browser_specific_settings;
-    // add permission *management*
-    manifest.permissions.push('management');
+    // remove permission *management*
+    manifest.permissions.splice(manifest.permissions.indexOf('management', 1));
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 4));
 }
 

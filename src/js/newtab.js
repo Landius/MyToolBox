@@ -71,6 +71,7 @@ function renderHtml(config){
         document.querySelector(".sites").style.display = "none";
     }
     config.NEWTAB.SITES.forEach((v)=>{
+		if(v.ENABLED === false) return;
       	if(rawHtml[v.GROUP]){
       	  rawHtml[v.GROUP] += ('<dd><a href="' + v.URL + '">' + v.NAME + '</a></dd>\n');
       	}else{

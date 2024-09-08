@@ -1,7 +1,5 @@
-let defaultConfig;
-// set default config by locale
-if (chrome.i18n.getMessage('@@ui_locale') === 'zh_CN') {
-    defaultConfig = {
+const presetConfig = {
+    zh_CN: {
         NEWTAB: {
             HIDENAV: false,
             SITES: [{ GROUP: '默认', NAME: '谷歌', URL: 'https://www.google.com' }],
@@ -23,9 +21,8 @@ if (chrome.i18n.getMessage('@@ui_locale') === 'zh_CN') {
                 { GROUP: '购物', NAME: '什么值得买', URL: 'http://search.smzdm.com/?s=%s' }
             ]
         }
-    };
-} else {
-    defaultConfig = {
+    },
+    en: {
         NEWTAB: {
             HIDENAV: false,
             SITES: [{ GROUP: 'default', NAME: 'google', URL: 'https://www.google.com' }],
@@ -43,7 +40,19 @@ if (chrome.i18n.getMessage('@@ui_locale') === 'zh_CN') {
                 { GROUP: 'Video', NAME: 'Vimeo', URL: 'https://vimeo.com/search?q=%s' }
             ]
         }
-    };
+    }
+};
+
+const locale = chrome.i18n.getMessage('@@ui_locale');
+let defaultConfig;
+
+// set default config by locale
+switch (locale) {
+    case 'zh_CN':
+        defaultConfig = presetConfig['zh_CN'];
+        break;
+    default:
+        defaultConfig = presetConfig['en'];
 }
 
 // create toobar icon context menu
@@ -101,6 +110,7 @@ function createCM(config) {
     // engines
     var groups = [];
     engines.forEach(engine => {
+        if (engine.ENABLED === false) return;
         const groupId = engine.GROUP;
         if (groups.includes(groupId) === false) {
             chrome.contextMenus.create({
@@ -130,6 +140,7 @@ function createCM(config) {
     });
     var extraGroups = [];
     extraEngines.forEach(engine => {
+        if (engine.ENABLED === false) return;
         const groupId = engine.GROUP;
         if (extraGroups.includes(groupId) === false) {
             chrome.contextMenus.create({

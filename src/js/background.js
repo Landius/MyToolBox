@@ -158,9 +158,6 @@ function init() {
     // add event listener
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         switch (request.cmd) {
-            case 'get_emoji':
-                sendResponse(emoji[Math.floor(Math.random() * emoji.length)]);
-                break;
             case 'get_config':
                 sendResponse(cachedConfig);
                 break;

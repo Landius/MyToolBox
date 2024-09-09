@@ -1,8 +1,5 @@
 function renderSearchPage(){
     addSearchEngines();
-    chrome.runtime.sendMessage({cmd: 'get_emoji'}, function(emoji){
-        document.getElementById('search_box').placeholder = emoji;
-    });
 
     function addSearchEngines() {
       // seems that chrome.runtime.sendMessage is an async api

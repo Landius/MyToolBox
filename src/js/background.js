@@ -87,79 +87,48 @@ function data2Object(data) {
 }
 
 function createCM(config) {
-    // create context menu
-    var root = chrome.contextMenus.create({
+    var groupIdArr = [];
+    // create root context menu
+    var rootId = 'searchMenu';
+    chrome.contextMenus.create({
         // note that %s in title will be replaced to selected text.
         title: config.SEARCH.PREFIX,
-        id: 'searchBy',
+        id: rootId,
         contexts: ['selection']
     });
+    groupIdArr.push(rootId);
 
-    var engines = [];
-    var extraEngines = [];
-    for (var item of config.SEARCH.ENGINES) {
-        if (item.GROUP.startsWith('*')) {
-            extraEngines.push(item);
-        } else {
-            engines.push(item);
+    for (var i = 0; i < config.SEARCH.ENGINES.length; i++) {
+        var engine = config.SEARCH.ENGINES[i];
+        if (engine.ENABLED === false) continue;
+        var parentId = rootId;
+        if (engine.GROUP !== '') {
+            var groupArr = engine.GROUP.split('>');
+            // create sub menus
+            for (var j = 0; j < groupArr.length; j++) {
+                var groupName = groupArr[j];
+                var groupId = 'subMenu_' + j + '_' + groupName;
+                if (groupIdArr.includes(groupId) === false) {
+                    chrome.contextMenus.create({
+                        title: groupName,
+                        parentId: parentId,
+                        id: groupId,
+                        contexts: ['selection']
+                    });
+                    groupIdArr.push(groupId);
+                }
+                parentId = groupId;
+            }
         }
+        // create search engine
+        chrome.contextMenus.create({
+            title: engine.NAME,
+            parentId: parentId,
+            id: i.toString(),
+            contexts: ['selection'],
+            onclick: search
+        });
     }
-
-    var i = 0;
-
-    // engines
-    var groups = [];
-    engines.forEach(engine => {
-        if (engine.ENABLED === false) return;
-        const groupId = engine.GROUP;
-        if (groups.includes(groupId) === false) {
-            chrome.contextMenus.create({
-                title: groupId,
-                id: groupId,
-                contexts: ['selection'],
-                parentId: root
-            });
-            groups.push(groupId);
-        }
-        chrome.contextMenus.create({
-            title: engine.NAME,
-            id: i.toString(),
-            contexts: ['selection'],
-            parentId: groupId,
-            onclick: search
-        });
-        i += 1;
-    });
-
-    // extra engines
-    var extra = chrome.contextMenus.create({
-        title: '...',
-        id: 'extra_search',
-        contexts: ['selection'],
-        parentId: root
-    });
-    var extraGroups = [];
-    extraEngines.forEach(engine => {
-        if (engine.ENABLED === false) return;
-        const groupId = engine.GROUP;
-        if (extraGroups.includes(groupId) === false) {
-            chrome.contextMenus.create({
-                title: groupId.replace('*', ''),
-                id: groupId,
-                contexts: ['selection'],
-                parentId: extra
-            });
-            extraGroups.push(groupId);
-        }
-        chrome.contextMenus.create({
-            title: engine.NAME,
-            id: i.toString(),
-            contexts: ['selection'],
-            parentId: groupId,
-            onclick: search
-        });
-        i += 1;
-    });
 }
 
 function openOptionsPage() {

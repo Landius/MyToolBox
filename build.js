@@ -21,14 +21,16 @@ if (args.length > 3) {
             printUsage();
     }
 }
-if (fxFlag === false) {
-    fs.copyFileSync(manifestPath, manifestPath + '.bk');
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, {encoding: 'utf8'}));
-    // remove firefox entry
-    delete manifest.browser_specific_settings;
+
+fs.copyFileSync(manifestPath, manifestPath + '.bk');
+const manifest = JSON.parse(fs.readFileSync(manifestPath, {encoding: 'utf8'}));
+if (fxFlag === true) {
     // remove permission *management*
     manifest.permissions.splice(manifest.permissions.indexOf('management', 1));
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 4));
+}else{
+    // remove firefox entry
+    delete manifest.browser_specific_settings;
 }
 
 // archive
